@@ -23,6 +23,9 @@ body {
     overflow: hidden;
     transform: perspective(1000px) scale(1.5) rotateX(5deg) rotateY(-8deg);
     text-align: left;
+    text-shadow:
+        0 0 1px #ffffff09,
+        0 0 3px #ffffff50;
 }
 
 .terminal::after {
