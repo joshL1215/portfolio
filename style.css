@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@100;700&display=swap');
+
+body {
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 100;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0, 0, 0);
+    overflow: hidden;
+    font-family: monospace;
+    color: white;
+}
+
+.terminal {
+    position: relative;
+    width: 700px;
+    padding: 2rem;
+    background: #000000;
+    border-radius: 40px;
+    overflow: hidden;
+    transform: perspective(1000px) scale(1.5) rotateX(5deg) rotateY(-5deg);
+    text-align: left;
+}
+
+.terminal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.25) 0px,
+            transparent 3px,
+            transparent 6px);
+    pointer-events: none;
+    animation: scanlineMove 0.3s linear infinite;
+}
+
+@keyframes scanlineMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 6px;
+    }
+}
+
+@keyframes staticNoise {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.02;
+    }
+
+    50% {
+        transform: translate(2px, 2px);
+        opacity: 0.05;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    background: rgb(255, 255, 255);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
