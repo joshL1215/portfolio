@@ -40,6 +40,18 @@ body {
     animation: scanlineMove 0.3s linear infinite;
 }
 
+.cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.9em;
+    background: rgb(255, 255, 255);
+    animation: blink 1s steps(1) infinite;
+    vertical-align: middle;
+    margin-left: 0.5em;
+    margin-bottom: 0.1em;
+}
+
+
 @keyframes scanlineMove {
     0% {
         background-position: 0 0;
