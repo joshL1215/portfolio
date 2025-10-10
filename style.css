@@ -16,7 +16,7 @@ body {
 
 .terminal {
     position: relative;
-    width: 600px;
+    width: 50vw;
     padding: 2rem;
     background: #000000;
     border-radius: 40px;
