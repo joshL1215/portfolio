@@ -199,6 +199,133 @@ body {
     fill: #7a7a7a;
 }
 
+.topo-wrap {
+    margin: 96px 0 6px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.topo {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+}
+
+.topo .n circle {
+    fill: var(--panel);
+    stroke: #1a1a1a;
+    stroke-width: 1;
+}
+
+.topo .e, .topo .c {
+    opacity: 1;
+}
+
+.topo .c { opacity: 0; }
+
+.topo .n1 { animation: topo-shift-1 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .n2 { animation: topo-shift-23 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .n3 { animation: topo-shift-23 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .n4 { animation: topo-shift-45 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .n5 { animation: topo-shift-45 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .n6 { animation: topo-shift-6 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+
+.topo .n2 { --dx2: -10px; --dy2: 70px; }
+.topo .n3 { --dx2: 40px;  --dy2: -14px; }
+.topo .n4 { --dx2: 10px;  --dy2: 26px; }
+.topo .n5 { --dx2: 60px;  --dy2: -52px; }
+
+.topo .n1 circle { animation: topo-pulse-l0 5s linear infinite; }
+.topo .n2 circle, .topo .n3 circle { animation: topo-pulse-l1 5s linear infinite; }
+.topo .n4 circle, .topo .n5 circle { animation: topo-pulse-l2 5s linear infinite; }
+.topo .n6 circle { animation: topo-pulse-l3 5s linear infinite; }
+
+.topo .e-ab, .topo .e-ac { animation: topo-fade-l0 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .e-bd, .topo .e-cd, .topo .e-ce { animation: topo-fade-l1 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .e-df, .topo .e-ef { animation: topo-fade-l2 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+
+.topo .c1, .topo .c2 { animation: topo-chain-l1 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .c3, .topo .c4 { animation: topo-chain-l2 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+.topo .c5 { animation: topo-chain-l3 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+
+@keyframes topo-shift-1 {
+    0%, 4%   { transform: translate(0, 0); }
+    20%, 80% { transform: translate(20px, 26px); }
+    90%, 100%{ transform: translate(0, 0); }
+}
+@keyframes topo-shift-23 {
+    0%, 12%  { transform: translate(0, 0); }
+    30%, 80% { transform: translate(var(--dx2), var(--dy2)); }
+    90%, 100%{ transform: translate(0, 0); }
+}
+@keyframes topo-shift-45 {
+    0%, 22%  { transform: translate(0, 0); }
+    42%, 80% { transform: translate(var(--dx2), var(--dy2)); }
+    90%, 100%{ transform: translate(0, 0); }
+}
+@keyframes topo-shift-6 {
+    0%, 32%  { transform: translate(0, 0); }
+    52%, 80% { transform: translate(30px, -14px); }
+    90%, 100%{ transform: translate(0, 0); }
+}
+
+@keyframes topo-pulse-l0 {
+    0%, 2%    { fill: var(--panel); }
+    4%, 8%    { fill: #1a1a1a; }
+    14%, 80%  { fill: #6a6a6a; }
+    90%, 100% { fill: var(--panel); }
+}
+@keyframes topo-pulse-l1 {
+    0%, 10%   { fill: var(--panel); }
+    13%, 17%  { fill: #1a1a1a; }
+    23%, 80%  { fill: #6a6a6a; }
+    90%, 100% { fill: var(--panel); }
+}
+@keyframes topo-pulse-l2 {
+    0%, 20%   { fill: var(--panel); }
+    23%, 27%  { fill: #1a1a1a; }
+    33%, 80%  { fill: #6a6a6a; }
+    90%, 100% { fill: var(--panel); }
+}
+@keyframes topo-pulse-l3 {
+    0%, 30%   { fill: var(--panel); }
+    33%, 37%  { fill: #1a1a1a; }
+    43%, 80%  { fill: #6a6a6a; }
+    90%, 100% { fill: var(--panel); }
+}
+
+@keyframes topo-fade-l0 {
+    0%, 4%   { opacity: 1; }
+    14%, 80% { opacity: 0; }
+    90%, 100%{ opacity: 1; }
+}
+@keyframes topo-fade-l1 {
+    0%, 12%  { opacity: 1; }
+    24%, 80% { opacity: 0; }
+    90%, 100%{ opacity: 1; }
+}
+@keyframes topo-fade-l2 {
+    0%, 22%  { opacity: 1; }
+    36%, 80% { opacity: 0; }
+    90%, 100%{ opacity: 1; }
+}
+
+@keyframes topo-chain-l1 {
+    0%, 22%  { opacity: 0; }
+    32%, 80% { opacity: 1; }
+    90%, 100%{ opacity: 0; }
+}
+@keyframes topo-chain-l2 {
+    0%, 34%  { opacity: 0; }
+    44%, 80% { opacity: 1; }
+    90%, 100%{ opacity: 0; }
+}
+@keyframes topo-chain-l3 {
+    0%, 44%  { opacity: 0; }
+    54%, 80% { opacity: 1; }
+    90%, 100%{ opacity: 0; }
+}
+
 /* ------- list entries ------- */
 
 .row {

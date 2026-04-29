@@ -27,8 +27,8 @@ export const data = {
         },
         {
             id: "influely",
-            title: "Influely",
-            tagline: "Most Powerful Insights @ Unwrapathon 2025",
+            title: "Influely (Most Powerful Insights @ Unwrapathon 2025)",
+            tagline: "Youtube NLP Analytics Platform",
             github: "https://github.com/joshL1215/youtube-analytics-unwrap",
             body: [
                 "We won the Most Powerful Insights track with this data aggregation and analytics tool.",
@@ -43,23 +43,11 @@ export const data = {
             github: "https://github.com/joshL1215/DeceitCode",
             body: [
                 "A LeetCode-like webapp built to resist AI-based cheating tools.",
-                "Includes a custom built code sandbox that executes user submissions in isolated Docker containers on gVisor runtime.",
+                "Includes a custom code sandbox that runs user submissions in gVisor + Docker containers",
                 "Uses prompts embedded in the website to disrupt LLM tools that use OCR or DOM-parsing."
             ],
-            stack: ["TypeScript", "Go", "React", "Express", "MongoDB", "Docker", "gVisor"]
+            stack: ["MERN", "TypeScript", "Go", "Docker", "gVisor"]
         },
-        {
-            id: "gemmaread",
-            title: "GemmaRead",
-            tagline: "Offline AI Reading Tutor",
-            github: "https://github.com/joshL1215/read-ai-offline",
-            body: [
-                "An offline-first LLM-powered reading tutor for low-connectivity regions.",
-                "Originally built for the Gemma 3n Impact Challenge hosted by Google DeepMind.",
-                "Runs a quantized version of Gemma 3n locally via Ollama and helps users improve their reading skills without any need for internet connection."
-            ],
-            stack: ["JavaScript", "React", "Python", "FastAPI", "Whisper", "SQLite", "Ollama"]
-        }
     ],
     experience: [
         {

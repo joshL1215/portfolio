@@ -61,8 +61,47 @@ export function renderPreviewPlaceholder(content) {
     doc.appendChild(el("h1", { text: "Preview" }));
     doc.appendChild(el("p", { class: "meta", text: "nothing selected" }));
     doc.appendChild(el("p", { text: "Select a project or experience entry on the left to read it here." }));
+
+    const wrap = el("div", { class: "topo-wrap" });
+    wrap.innerHTML = TOPO_SVG;
+    doc.appendChild(wrap);
+
     content.appendChild(doc);
 }
+
+const TOPO_SVG = `
+<svg class="topo" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <marker id="topoarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1a1a"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#1a1a1a" stroke-width="1">
+    <line class="e e-ab" x1="56" y1="78" x2="106" y2="46" marker-end="url(#topoarr)"/>
+    <line class="e e-ac" x1="56" y1="86" x2="106" y2="118" marker-end="url(#topoarr)"/>
+    <line class="e e-bd" x1="136" y1="46" x2="186" y2="78" marker-end="url(#topoarr)"/>
+    <line class="e e-cd" x1="136" y1="118" x2="186" y2="86" marker-end="url(#topoarr)"/>
+    <line class="e e-ce" x1="136" y1="124" x2="186" y2="156" marker-end="url(#topoarr)"/>
+    <line class="e e-df" x1="216" y1="86" x2="266" y2="118" marker-end="url(#topoarr)"/>
+    <line class="e e-ef" x1="216" y1="156" x2="266" y2="126" marker-end="url(#topoarr)"/>
+  </g>
+  <g fill="none" stroke="#1a1a1a" stroke-width="1">
+    <line class="c c1" x1="76" y1="110" x2="94" y2="110" marker-end="url(#topoarr)"/>
+    <line class="c c2" x1="126" y1="110" x2="144" y2="110" marker-end="url(#topoarr)"/>
+    <line class="c c3" x1="176" y1="110" x2="194" y2="110" marker-end="url(#topoarr)"/>
+    <line class="c c4" x1="226" y1="110" x2="244" y2="110" marker-end="url(#topoarr)"/>
+    <line class="c c5" x1="276" y1="110" x2="294" y2="110" marker-end="url(#topoarr)"/>
+  </g>
+  <g class="topo-nodes">
+    <g class="n n1"><circle cx="40" cy="84" r="14"/></g>
+    <g class="n n2"><circle cx="120" cy="40" r="14"/></g>
+    <g class="n n3"><circle cx="120" cy="124" r="14"/></g>
+    <g class="n n4"><circle cx="200" cy="84" r="14"/></g>
+    <g class="n n5"><circle cx="200" cy="162" r="14"/></g>
+    <g class="n n6"><circle cx="280" cy="124" r="14"/></g>
+  </g>
+</svg>
+`;
 
 export function renderHomePreview(content) {
     content.appendChild(el("h1", { text: "About" }));
