@@ -1,113 +1,386 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@100;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap');
+
+:root {
+    --paper: #e8e8e6;
+    --paper-2: #dedede;
+    --panel: #eeeeec;
+    --panel-2: #e2e2e0;
+    --ink: #1a1a1a;
+    --ink-soft: #333333;
+    --ink-mute: #6e6e6e;
+    --ink-faint: #b4b4b2;
+    --rule: #c4c4c2;
+    --rule-strong: #2a2a2a;
+    --selected-bg: #d6d6d4;
+}
+
+* { box-sizing: border-box; }
+
+html, body { filter: grayscale(100%); }
 
 body {
-    font-family: 'Ubuntu Mono', monospace;
-    font-weight: 100;
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 16px;
+    font-weight: 400;
     margin: 0;
     height: 100vh;
+    background-color: var(--paper);
+    color: var(--ink);
+    overflow: hidden;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "onum" 1;
+}
+
+.wallpaper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.32;
+    pointer-events: none;
+    z-index: 0;
+    border: none;
+}
+
+
+.desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.windows {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 0;
     justify-content: center;
     align-items: center;
-    background: #000000;
-    overflow: hidden;
-    font-family: monospace;
-    color: white;
 }
 
-.terminal {
+.win {
+    flex: 0 0 540px;
+    min-width: 0;
+    width: 540px;
+    height: 90vh;
+    background: var(--panel);
+    border: 1px solid var(--rule-strong);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border-radius: 0;
+    overflow: hidden;
     position: relative;
-    width: 50vw;
-    padding: 2rem;
-    background: #000000;
-    border-radius: 40px;
-    overflow: hidden;
-    transform: perspective(1000px) scale(1.5) rotateX(5deg) rotateY(-8deg);
-    text-align: left;
-    text-shadow:
-        0 0 1px #ffffff09,
-        0 0 3px #ffffff50;
+    transform: scale(0.92);
+    transform-origin: center center;
 }
 
-.terminal::after {
+.tabs {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    background: var(--panel);
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.tab {
+    padding: 14px 20px 12px 20px;
+    background: transparent;
+    color: var(--ink-mute);
+    font-family: "Newsreader", serif;
+    font-size: 15px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    border-right: 1px solid var(--rule);
+    position: relative;
+    font-feature-settings: "onum" 1;
+}
+
+.tab:hover { color: var(--ink); }
+
+.tab.active {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.tab.active::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.25) 0px,
-            transparent 3px,
-            transparent 6px);
-    pointer-events: none;
-    animation: scanlineMove 0.3s linear infinite;
+    left: 20px;
+    right: 20px;
+    bottom: 6px;
+    height: 2px;
+    background: var(--ink);
 }
 
-.cursor {
+.win-content {
+    flex: 1;
+    padding: 44px 48px 48px 48px;
+    overflow-y: auto;
+    min-height: 0;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--panel);
+}
+
+.win-content h1 {
+    font-family: "Newsreader", serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    color: var(--ink);
+    font-feature-settings: "onum" 1;
+}
+
+.win-content h2 {
+    font-family: "Newsreader", serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0;
+    margin: 28px 0 10px 0;
+    color: var(--ink);
+}
+
+.win-content p {
+    margin: 0 0 12px 0;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.statusbar {
+    background: var(--panel);
+    border-top: 1px solid var(--rule);
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-mute);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.mem-diagram {
+    height: 14px;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+.mem-diagram rect {
+    fill: #2a2a2a;
+}
+
+.mem-diagram rect.pad {
+    fill: #c8c8c8;
+}
+
+.mem-diagram rect.dense {
+    fill: url(#dots-dense);
+}
+
+.mem-diagram rect.sparse {
+    fill: url(#dots-sparse);
+}
+
+.mem-diagram rect.mid {
+    fill: #7a7a7a;
+}
+
+/* ------- list entries ------- */
+
+.row {
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    gap: 14px;
+    padding: 14px 0;
+    cursor: pointer;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    margin: 0 -48px;
+    padding-left: 48px;
+    padding-right: 48px;
+    font-family: "Newsreader", serif;
+}
+
+.row:first-of-type { border-top: 1px solid var(--rule); margin-top: 24px; }
+
+.row:hover { background: var(--panel-2); }
+
+.row.active {
+    background: var(--selected-bg);
+}
+.row.active .row-num::before {
+    content: "";
     display: inline-block;
-    width: 0.5em;
-    height: 0.8em;
-    background: rgb(255, 255, 255);
-    animation: blink 1s steps(1) infinite;
+    width: 10px;
+    height: 2px;
+    background: var(--ink);
+    margin-right: 6px;
     vertical-align: middle;
-    margin-left: 0.5em;
-    margin-bottom: 0.1em;
+    margin-bottom: 3px;
 }
 
-
-@keyframes scanlineMove {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 0 6px;
-    }
+.row-num {
+    font-family: "Newsreader", serif;
+    font-size: 14px;
+    color: var(--ink-mute);
+    font-feature-settings: "onum" 1;
+    font-style: italic;
 }
 
-@keyframes staticNoise {
+.row-body { min-width: 0; }
 
-    0%,
-    100% {
-        transform: translate(0, 0);
-        opacity: 0.02;
-    }
-
-    50% {
-        transform: translate(2px, 2px);
-        opacity: 0.05;
-    }
+.row-title {
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 2px;
+    color: var(--ink);
+    font-family: "Newsreader", serif;
 }
 
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0;
-    }
+.row-title strong,
+.doc h1 strong {
+    font-weight: inherit;
+    text-decoration: underline;
 }
 
-/* Minimal scrollbar */
-.minimal-scrollbar::-webkit-scrollbar {
+.row-sub {
+    font-size: 14px;
+    color: var(--ink-mute);
+    font-family: "Newsreader", serif;
+    font-style: italic;
+}
+
+/* ------- doc body ------- */
+
+.doc { font-family: "Newsreader", serif; }
+
+.doc.home { margin-top: 28px; }
+.doc.about { margin-top: 28px; }
+.doc.about p { margin-bottom: 20px; line-height: 1.85; font-size: 17px; }
+
+.doc .meta,
+.doc.meta {
+    color: var(--ink-mute);
+    font-family: "Newsreader", serif;
+    font-size: 14px;
+    font-style: italic;
+    margin: 4px 0 8px 0;
+}
+
+.doc .role {
+    font-family: "Newsreader", serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 4px 0 4px 0;
+    color: var(--ink);
+}
+
+.doc ul {
+    margin: 8px 0 16px 0;
+    padding-left: 18px;
+    list-style: none;
+}
+
+.doc li {
+    margin: 7px 0;
+    padding-left: 0;
+    position: relative;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.62;
+}
+
+.doc li::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 11px;
     width: 6px;
+    height: 1px;
+    background: var(--ink);
 }
 
-.minimal-scrollbar::-webkit-scrollbar-track {
+.doc .tag {
+    display: inline-block;
     background: transparent;
+    color: var(--ink);
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    font-size: 14px;
+    font-family: "Newsreader", serif;
+    padding: 1px 3px 1px 0;
+    margin: 3px 10px 3px 0;
+    font-style: italic;
 }
 
-.minimal-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 9999px;
+.doc a.ext {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    font-style: italic;
+    word-break: break-all;
 }
 
-.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+.doc a.ext:hover {
+    background: var(--ink);
+    color: var(--paper);
 }
 
-.minimal-scrollbar {
+.doc .kv {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 18px;
+    margin: 0;
+    font-size: 15px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+}
+.doc .kv:last-of-type { border-bottom: none; }
+
+.doc .kv-label {
+    font-family: "Newsreader", serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink-mute);
+}
+
+.doc .kv > div:last-child {
+    color: var(--ink);
+    font-weight: 400;
+    font-family: "Newsreader", serif;
+}
+
+/* ------- scrollbars ------- */
+.win-content::-webkit-scrollbar { width: 6px; }
+.win-content::-webkit-scrollbar-track { background: transparent; }
+.win-content::-webkit-scrollbar-thumb { background: var(--ink-faint); }
+.win-content::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }
+.win-content {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    scrollbar-color: var(--ink-faint) transparent;
+}
+
+@media (max-width: 900px) {
+    .windows {
+        flex-direction: column;
+        padding: 1.25rem;
+        gap: 1.25rem;
+        overflow-y: auto;
+    }
+    .win { max-width: 100%; min-height: 50vh; }
 }

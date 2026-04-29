@@ -1,18 +1,7 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const terminals = document.querySelectorAll('.terminal');
+import { init } from './src/app.js';
 
-    terminals.forEach(term => {
-        const lines = term.querySelectorAll(':scope > *');
-        lines.forEach(x => x.style.display = 'none');
-        let i = 0;
-
-        function showNextLine() {
-            if (i >= lines.length) return;
-            lines[i].style.display = 'block';
-            i++;
-            setTimeout(showNextLine, 200);
-        }
-
-        showNextLine();
-    });
-});
+if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", init);
+} else {
+    init();
+}
