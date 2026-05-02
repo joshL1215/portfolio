@@ -113,7 +113,9 @@ export function renderHomePreview(content) {
 
 export function renderProjectDetail(content, item) {
     const doc = el("div", { class: "doc" });
-    doc.appendChild(el("h1", { text: item.title }));
+    const heading = el("div", { class: "project-heading" });
+    heading.appendChild(el("h1", { text: item.title }));
+    doc.appendChild(heading);
     doc.appendChild(el("p", { class: "meta", text: item.tagline }));
 
     doc.appendChild(el("h2", { text: "Overview" }));

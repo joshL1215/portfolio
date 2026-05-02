@@ -141,6 +141,7 @@ body {
     font-feature-settings: "onum" 1;
 }
 
+
 .win-content h2 {
     font-family: "Newsreader", serif;
     font-size: 15px;
@@ -340,7 +341,9 @@ body {
     padding-left: 48px;
     padding-right: 48px;
     font-family: "Newsreader", serif;
+    position: relative;
 }
+
 
 .row:first-of-type { border-top: 1px solid var(--rule); margin-top: 24px; }
 
