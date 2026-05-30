@@ -16,7 +16,9 @@
 
 * { box-sizing: border-box; }
 
-html, body { filter: grayscale(100%); }
+html { filter: grayscale(100%); }
+
+img.no-grayscale { filter: grayscale(0%); }
 
 body {
     font-family: "Newsreader", Georgia, serif;
