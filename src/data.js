@@ -80,11 +80,11 @@ export const data = {
             id: "ziprecruiter",
             role: "Software Engineer Intern",
             org: "ZipRecruiter",
-            dates: "Incoming June 2026",
+            dates: "June 2026 - Sep 2026",
             body: [
-                "Will be joining a team working on clickstream data infrastructure.",
+                "Working on the Recommendations team, mostly supporting machine learning work with internal tooling",
             ],
-            stack: ["TBD"],
+            stack: ["Go, gRPC, React, Athena/SQL"],
         },
         {
             id: "acm-unwrap",
