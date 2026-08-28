@@ -137,7 +137,7 @@ export const SECTIONS = [
 ];
 
 export const profile = [
-    ["school", "UC Santa Barbara", null],
+    ["school", "UC San Diego", null],
     ["github", "github.com/joshL1215", "https://github.com/joshL1215"],
     [
         "linkedin",

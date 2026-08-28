@@ -2,8 +2,8 @@ import { el } from './dom.js';
 import { data, profile } from './data.js';
 
 export function renderHome(content) {
-    content.appendChild(el("h1", { text: "Joshua Lee" }));
-    content.appendChild(el("p", { class: "doc meta", text: "CS @ UCSB" }));
+    content.appendChild(el("h1", { text: "Josh Lee" }));
+    content.appendChild(el("p", { class: "doc meta", text: "Math & CS @ UCSD; prev CS @ UCSB" }));
 
     const doc = el("div", { class: "doc home" });
     const kv = el("div", {});
