@@ -21,19 +21,19 @@ import { createFX } from "./fx.js";
 //   name     tooltip title shown when hovering over it
 // If none load, a placeholder shape is used instead.
 const MODELS = {
-  gpu: { url: "/models/gpu.glb", size: 1.9, collider: "box", upright: true, impact: "sparks", name: "old gpu" },
-  embedding: { url: "/models/embedding.glb", size: 2.45, collider: "box", upright: true, name: "high-dimensional embedding" },
-  graph: { url: "/models/graph.glb", size: 1.2, collider: "hull", upright: false, name: "k nearest neighbors" },
-  container: { url: "/models/container.glb", size: 1.9, collider: "box", upright: true, impact: "sparks", name: "container" },
-  chair: { url: "/models/chair.glb", size: 2.0, collider: "hull", upright: true, steady: 0.35, impact: "dust", name: "chair" },
-  rack: { url: "/models/rack.glb", size: 1.6, collider: "box", upright: true, steady: 0.35, impact: "sparks", name: "server rack" },
-  trident: { url: "/models/trident.glb", size: 2.2, collider: "hull", upright: false, impact: "sparks", name: "trident" },
-  bridge: { url: "/models/bridge.glb", size: 2.6, collider: "hull", upright: true, steady: 0.3, impact: "sparks", name: "golden gate bridge" },
-  medal: { url: "/models/medal.glb", size: 1.4, collider: "box", upright: true, steady: 0.3, impact: "sparks", name: "medal" },
-  trophy: { url: "/models/trophy.glb", size: 1.6, collider: "hull", upright: true, steady: 0.35, impact: "sparks", name: "1st place trophy" },
+  gpu: { url: "models/gpu.glb", size: 1.9, collider: "box", upright: true, impact: "sparks", name: "old gpu" },
+  embedding: { url: "models/embedding.glb", size: 2.45, collider: "box", upright: true, name: "high-dimensional embedding" },
+  graph: { url: "models/graph.glb", size: 1.2, collider: "hull", upright: false, name: "k nearest neighbors" },
+  container: { url: "models/container.glb", size: 1.9, collider: "box", upright: true, impact: "sparks", name: "container" },
+  chair: { url: "models/chair.glb", size: 2.0, collider: "hull", upright: true, steady: 0.35, impact: "dust", name: "chair" },
+  rack: { url: "models/rack.glb", size: 1.6, collider: "box", upright: true, steady: 0.35, impact: "sparks", name: "server rack" },
+  trident: { url: "models/trident.glb", size: 2.2, collider: "hull", upright: false, impact: "sparks", name: "trident" },
+  bridge: { url: "models/bridge.glb", size: 2.6, collider: "hull", upright: true, steady: 0.3, impact: "sparks", name: "golden gate bridge" },
+  medal: { url: "models/medal.glb", size: 1.4, collider: "box", upright: true, steady: 0.3, impact: "sparks", name: "medal" },
+  trophy: { url: "models/trophy.glb", size: 1.6, collider: "hull", upright: true, steady: 0.35, impact: "sparks", name: "1st place trophy" },
   // placeholder for entries whose prop isn't decided yet
   tbd: { make: thinkingPuck, size: 1.2, collider: "cylinder", upright: true, steady: 0.15, name: "placeholder" },
-  cup: { url: "/models/cup.glb", size: 0.9, collider: "hull", upright: true, impact: "dust", name: "coffee" },
+  cup: { url: "models/cup.glb", size: 0.9, collider: "hull", upright: true, impact: "dust", name: "coffee" },
 };
 const ENV_STRENGTH = 0.25; // faint reflections so metal parts aren't black; floor ignores this
 const MAX_OBJECTS = 14;   // oldest gets removed past this
@@ -520,7 +520,8 @@ function load(id) {
     templates[id] ??= prepare(cfg.make(), cfg);
     return Promise.resolve();
   }
-  loading[id] ??= loader.loadAsync(cfg.url).then(
+  // BASE_URL keeps the path right when the site lives in a subfolder (GitHub Pages)
+  loading[id] ??= loader.loadAsync(import.meta.env.BASE_URL + cfg.url).then(
     (gltf) => (templates[id] = prepare(gltf.scene, cfg)),
     (err) => console.warn(`couldn't load ${cfg.url}`, err)
   );
